@@ -1,0 +1,80 @@
+<% unless user_signed_in? %>
+    <div class="header">
+        <%= image_tag('Artboard 1.png', width: 250, height: 250, style: "margin-top: 20px; position:relative; left: 50%; margin-left:-125px;") %>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="container">
+                </div class="row">
+                    <div class="col-12 white-text text-center">
+                        <h4 class="subheader">Who is to say?</h4>
+                        <%= link_to "Sign In", new_user_session_path, class: "btn btn-white" %>
+                        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-white" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <div class="navi">
+        <%= image_tag('Artboard 1.png', width: 100, height: 100, style: " position:relative; left: 50%; margin-left:-50px;") %>
+        <%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-outline-white btn-rounded" %>
+    </div>
+    <h1 class="name"><%= current_user.fname %> <%= current_user.lname %></h1>
+    <p class="sharelink">http://www.oalu.tk/<%= current_user.url %>/comments/new</p>
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row-4">
+                <% @comments.each do |comment| %>
+                    <div class="card panel">
+                        <div class="card-body">
+                            <%= comment.body %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>
+<style>
+    body {
+        margin: 0;
+    }
+    .header {
+        width:100%;
+        height:400px;
+        background-color: #ca1391;
+    }
+    .navi {
+        width:100%;
+        height:100px;
+        background-color: #ca1391;
+    }
+    .container, .col-12 {
+        padding: 0;
+    }
+    .btn {
+        font-family: 'Open Sans';
+    }
+    .subheader {
+        margin-bottom: 30px;
+        margin-top: -50px;
+    }
+    .name {
+        position:relative;
+        margin-top: 40px;
+        text-align: center;
+        font-size: 45px;
+    }
+    .sharelink {
+        color: #007bff !important;
+        text-align: center !important;
+        cursor: pointer;
+        margin-bottom: 80px;
+        font-size: 20px;
+    }
+    .panel {
+        margin-bottom: 30px;
+        padding: 15px;
+        font-size: 20px;
+    }
+</style>

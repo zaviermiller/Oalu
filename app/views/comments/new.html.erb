@@ -1,0 +1,59 @@
+<div class="navi">
+  <%= image_tag('Artboard 1.png', width: 100, height: 100, style: " position:relative; left: 50%; margin-left:-50px;") %>
+</div>
+<%= form_with(model: @comment,remote: false) do |form| %>
+  <div class="flex-center d-flex justify-content-center align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-7 text-center">
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body px-lg-5 pt-0">
+
+            <p class="h4 mb-4"><%= @user.fname %> <%= @user.lname %></p>
+
+                <!-- Email -->
+                <div class="lg-form">
+                  <%= form.text_area :body, autofocus: true, class: 'form-control', placeholder: 'Leave a message :)' %>
+                </div>
+
+                <!-- Sign in button -->
+                <%= form.submit "Send", class: "btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+  <style>
+  .card {
+    margin-top: 100px;
+    padding-top:20px;
+  }
+  .card-header {
+    background-color: #ca1391;
+  }
+  .btn-outline-info {
+    border-color: #ca1391 !important;
+    color: #ca1391 !important;
+  }
+  .form-control:focus {
+    border-color: #ca1391;
+  }
+  .btn:hover {
+    border-color: #ca1391 !important;
+    color: #ca1391 !important;
+  }
+  .row {
+    justify-content: center !important;
+  }
+  .navi {
+        width:100%;
+        height:100px;
+        background-color: #ca1391;
+    }
+</style>
